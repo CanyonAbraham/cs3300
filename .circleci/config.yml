@@ -20,4 +20,3 @@ workflows:
     jobs:
       - build
 
-store_test_results
