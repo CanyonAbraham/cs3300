@@ -23,5 +23,3 @@ workflows:
       - build
       
 
-store_test_results:
-    path: /root/project/coverage/index.html
