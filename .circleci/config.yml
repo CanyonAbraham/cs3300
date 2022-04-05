@@ -12,12 +12,10 @@ jobs:
       - checkout
       - run:
           name: rspec
-          command: bundle install && bundle exec rake db:migrate RAILS_ENV=test && bundle exec rspec
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-      - run: mkdir ~/rspec
-      - run:
+          command: bundle install && bundle exec rake db:migrate RAILS_ENV=test
           command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
           when: always
+      - run: mkdir ~/rspec
       - store_test_results:
           path: ~/rspec
 
