@@ -48,6 +48,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   #Create integration spec and a home page
   gem 'capybara'
+  
 end
 
 group :development do
@@ -77,4 +78,7 @@ gem 'mini_racer'
 
 gem 'rspec_junit_formatter'
 
+gem 'devise'
+
+gem 'factory_bot'
 
