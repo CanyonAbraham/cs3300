@@ -75,10 +75,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mini_racer'
 
-
 gem 'rspec_junit_formatter'
 
 gem 'devise'
 
 gem 'factory_bot'
 
+gem 'bootstrap', '~> 5.1.3'
+
+gem 'jquery-rails'
