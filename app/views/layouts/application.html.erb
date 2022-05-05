@@ -4,31 +4,51 @@
     <title>Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
   <% end %>
   <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
   <% end %>
-  
-  <p class="navbar-text float-right">
+
+  <nav class="navbar navbar-light bg-dark">
+  <a class="navbar-brand text-light" href="/">Canyon's Portfolio</a>
+  <form class="form-inline">
   <% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <div class="text-nowrap text-light" style="padding-right: 10px;">
+    Logged in as <strong><%= current_user.email %></strong>
+  </div>
+    <%= link_to 'Edit profile', edit_user_registration_path, class: "btn btn-success" %> 
+    <div style="padding-left: 10px;">
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+    </div>
+
   <% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    <a class="btn btn-primary" href="/users/sign_in" role="button">
+      Login
+    </a>
+    <div style="padding-left: 10px;">
+      <a class="btn btn-success" href="/users/sign_up" role="button">
+      Sign Up
+      </a>
+    </div>
+  </form>
   <% end %>
-</p>
-    <%= yield %>
-  </body>
+
+</nav>
+
+<%= yield %>
+</body>
 </html>
 
 
+
+
+
+  

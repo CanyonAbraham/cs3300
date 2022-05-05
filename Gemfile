@@ -81,6 +81,6 @@ gem 'devise'
 
 gem 'factory_bot'
 
-gem 'bootstrap', '~> 5.1.3'
+gem 'bootstrap', '~> 4.6.1'
 
 gem 'jquery-rails'

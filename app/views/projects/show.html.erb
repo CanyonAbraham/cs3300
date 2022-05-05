@@ -1,14 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Cover Template for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+  </head>
+
+  <p id="notice"><%= notice %></p>
+  <body class="text-center bg-info">
+  
+    
+    
+      <main role="main" class="inner cover text-dark">
+        <h1 class="cover-heading"><%= @project.title %></h1>
+        <p class="lead"><%= @project.description %></p>
+        
+        </p>
+      </main>
+      <div class="fixed-bottom">
+        <%= link_to 'Back', projects_path, class:"btn btn-primary" %>
+        <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-primary"%>
+        <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+   
+    </body>
+      
+
+
+
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>

@@ -1,12 +1,12 @@
 
+
 require 'rails_helper'
 
 RSpec.feature "Projects", type: :feature do
-
   context "Create new project" do
     before(:each) do
       visit new_project_path
-      within("form") do
+      within(all('form')[1]) do
         fill_in "Title", with: "Test title"
       end
     end
@@ -30,7 +30,7 @@ RSpec.feature "Projects", type: :feature do
     end
 
     scenario "should be successful" do
-      within("form") do
+      within(all('form')[1]) do
         fill_in "Description", with: "New description content"
       end
       click_button "Update Project"
@@ -38,7 +38,7 @@ RSpec.feature "Projects", type: :feature do
     end
 
     scenario "should fail" do
-      within("form") do
+      within(all('form')[1]) do
         fill_in "Description", with: ""
       end
       click_button "Update Project"
@@ -56,4 +56,3 @@ RSpec.feature "Projects", type: :feature do
     end
   end
 end
-
