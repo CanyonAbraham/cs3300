@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Portfolio</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+  <head>
+    <title>Portfolio</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
   <body>
-  
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
   <% end %>
   <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
   <% end %>
-
+  
   <nav class="navbar navbar-light bg-dark">
   <a class="navbar-brand text-light" href="/">Canyon's Portfolio</a>
   <form class="form-inline">
@@ -29,26 +28,20 @@
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
     </div>
 
+
   <% else %>
-    <a class="btn btn-primary" href="/users/sign_in" role="button">
-      Login
-    </a>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-success" %>
     <div style="padding-left: 10px;">
-      <a class="btn btn-success" href="/users/sign_up" role="button">
-      Sign Up
-      </a>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
     </div>
-  </form>
   <% end %>
-
+  </form>
 </nav>
-
-  <%= yield %>
-  </body>
-</html>
-
 
 
 
 
   
+    <%= yield %>
+  </body>
+</html>
