@@ -48,7 +48,7 @@
           null,
           null,
           1,
-          2,
+          3,
           null,
           null,
           null,
@@ -140,26 +140,8 @@
         ],
         "branches": {
         }
-      },
-      "/root/portfolio/app/jobs/application_job.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/root/portfolio/app/mailers/application_mailer.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1651983827
+    "timestamp": 1652316205
   }
 }
