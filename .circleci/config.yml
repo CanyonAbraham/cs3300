@@ -19,6 +19,69 @@ jobs:
       - checkout
       - heroku/install
       - heroku/deploy-via-git
+  test:
+    parallelism: 2
+    docker:
+      - image: 'tghastings/code-esaas'
+    steps:
+      - checkout
+      - restore_cache:
+        keys:
+          - portfolio-bundle-
+          - portfolio-bundle-
+      - run:
+          name: Install Bundler Gem
+          command: gem install bundler --no-ri --no-rdoc
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      
+      # Run rspec in parallel
+      - run:
+          command: |
+            mkdir /tmp/test-results
+            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+            xvfb-run --auto-servernum bundle exec rspec $TESTFILES --profile 10 --color --format progress --format RspecJunitFormatter --out /tmp/test-results/rspec.xml
+      - store_test_results:
+          path: /tmp/test-results
+      - run:
+          name: Stash Coverage Results
+          command: |
+            mkdir coverage_results
+            cp -R coverage/.resultset.json coverage_results/.resultset-${CIRCLE_NODE_INDEX}.json
+      - persist_to_workspace:
+          root: .
+          paths:
+            - coverage_results
+      - store_artifacts:
+          path: tmp/test_prof
+
+  coverage:
+    docker:
+      - image: ruby:2.1.2
+    environment:
+      BUNDLE_JOBS: 2
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - portfolio-bundle-
+            - portfolio-bundle-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run:
+          name: Merge and check coverage
+          command: |
+            bundle exec rake coverage:report
+      - store_artifacts:
+          path: coverage
+
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -30,3 +93,7 @@ workflows:
       - deploy:
           requires:
             - build
+      - test
+      - coverage:
+        requires:
+          -test
