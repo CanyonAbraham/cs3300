@@ -120,28 +120,8 @@
           null,
           null
         ]
-      },
-      "/root/portfolio/app/channels/application_cable/channel.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/root/portfolio/app/channels/application_cable/connection.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1652320608
+    "timestamp": 1652323498
   }
 }

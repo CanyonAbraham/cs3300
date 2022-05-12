@@ -6,9 +6,10 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
   <% end %>
@@ -38,10 +39,6 @@
   </form>
 </nav>
 
-
-
-
-  
     <%= yield %>
-  </body>
+    
 </html>
