@@ -10,18 +10,21 @@
       </ul>
     </div>
   <% end %>
-
+<body class= "text-center bg-light">
   <div class="field">
     <%= form.label :title %>
+    <br>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
+    <br>
     <%= form.text_area :description %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+</body>
 <% end %>
