@@ -11,11 +11,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: rspec
-          command: bundle install && bundle exec rake db:migrate RAILS_ENV=test && bundle exec rspec
-      - run:
-          name: Creating Artifact
+          name: Rspec and Creating Artifact
           command: |
+            bundle install && bundle exec rake db:migrate RAILS_ENV=test && bundle exec rspec
             mkdir /tmp/artifacts
             cp /root/project/coverage/index.html /tmp/artifacts
       - store_artifacts:
