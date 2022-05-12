@@ -6,35 +6,6 @@ require File.expand_path('../config/environment', __dir__)
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'simplecov'
-SimpleCov.start 'rails' do
-  add_filter '/bin/'
-  add_filter '/db/'
-  add_filter '/spec/' # for rspec
-
-  # Disambiguates individual test runs with CIRCLE_NODE_INDEX
-  command_name "Job #{ENV['CIRCLE_NODE_INDEX']}" if ENV['CIRCLE_NODE_INDEX']
-  
-  # If running test in CI, generate just .json result, then we can join them later
-  # else, generate the full HTML report
-  if ENV['CI']
-    formatter SimpleCov::Formatter::SimpleFormatter
-  else
-    formatter SimpleCov::Formatter::MultiFormatter.new(
-      [
-        SimpleCov::Formatter::SimpleFormatter,
-        SimpleCov::Formatter::HTMLFormatter
-      ]
-    )
-  end
-
-  track_files "**/*.rb"
-end
-
-require File.expand_path('../config/environment', __dir__)
-
-
-
 require 'rspec/rails'
 
 require 'devise'
